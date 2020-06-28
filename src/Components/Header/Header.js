@@ -8,12 +8,11 @@ import InputBase from '@material-ui/core/InputBase';
 import LiveTvIcon from '@material-ui/icons/LiveTv';
 import SearchIcon from '@material-ui/icons/Search';
 
-import { withStyles } from "@material-ui/core/styles";
+import {withStyles} from '@material-ui/core/styles';
 import styles from './styles';
 
-
 const Header = (props) => {
-    const { classes } = props;
+    const {classes} = props;
     return (
         <div className={classes.root}>
             <AppBar position="static">
@@ -44,7 +43,6 @@ const Header = (props) => {
                     </div>
                 </Toolbar>
             </AppBar>
-            <Toolbar />
         </div>
     );
 };
