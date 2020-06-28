@@ -5,7 +5,7 @@ import './index.css';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import {ThemeProvider} from '@material-ui/core/styles';
 import App from './Components/App';
-import theme from './theme';
+import theme from './assets/theme';
 
 ReactDOM.render(
     <ThemeProvider theme={theme}>
