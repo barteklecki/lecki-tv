@@ -22,7 +22,7 @@ export default function Footer() {
         <footer className={classes.footer}>
             <Container maxWidth="sm">
                 <Typography variant="body2">
-                    Powered by
+                    Powered by&nbsp;
                     <Link color="inherit" href="https://www.tvmaze.com/api">
                         TV-Maze API
                     </Link>

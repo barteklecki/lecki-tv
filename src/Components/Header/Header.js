@@ -14,8 +14,8 @@ import styles from './styles';
 const Header = (props) => {
     const {classes} = props;
     return (
-        <div className={classes.root}>
-            <AppBar position="static">
+        <div>
+            <AppBar position="static" className={classes.root}>
                 <Toolbar>
                     <IconButton
                         edge="start"
