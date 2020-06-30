@@ -9,10 +9,12 @@ import {makeStyles} from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
+        width: 'fit-content',
+        maxWidth: '100%',
         flexDirection: 'row',
-        justifyContent: 'center',
+        justifyContent: 'start',
         margin: 'auto',
-        width: 'auto',
+        padding: '0 1rem',
         overflow: 'auto',
         backgroundColor: theme.palette.background.paper,
     },
@@ -22,6 +24,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const week = [
+    {short: 'Mo', date: '29.06'},
+    {short: 'Tu', date: '30.06'},
+    {short: 'We', date: '1.07'},
+    {short: 'Th', date: '2.07'},
+    {short: 'Fr', date: '3.07'},
+    {short: 'Sa', date: '4.07'},
+    {short: 'Su', date: '5.07'},
     {short: 'Mo', date: '29.06'},
     {short: 'Tu', date: '30.06'},
     {short: 'We', date: '1.07'},
