@@ -20,6 +20,8 @@ const Content = () => {
     return (
         <Container component="main" className={classes.main}>
             <MovieList />
+            <br/>
+            <MovieDetails />
         </Container>
     );
 };
