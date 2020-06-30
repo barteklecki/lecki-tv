@@ -47,49 +47,59 @@ const MovieDetails = () => {
     return (
         <Card className={classes.root}>
             <CardContent className={classes.summary}>
-                <br/>
+                <br />
                 <Typography component="h4" variant="h4" aria-label="title">
                     Girls: Live From Space
                 </Typography>
-                <Typography variant="subtitle1" color="textSecondary" aria-label="genere">
+                <Typography
+                    variant="subtitle1"
+                    color="textSecondary"
+                    aria-label="genere"
+                >
                     Drama, Romance
                 </Typography>
                 <div className={classes.rating}>
-                    <Chip label="17.4" color="secondary" size="small" />&nbsp;&nbsp;/&nbsp;&nbsp;
-                    <Rating readOnly 
-                        name="half-rating-read" 
-                        defaultValue={3.5} 
-                        precision={0.5} 
+                    <Chip label="17.4" color="secondary" size="small" />
+                    &nbsp;&nbsp;/&nbsp;&nbsp;
+                    <Rating
+                        readOnly
+                        name="half-rating-read"
+                        defaultValue={3.5}
+                        precision={0.5}
                         aria-label="rating"
                     />
                 </div>
-                <Typography variant="h6" color="textSecondary" aria-label="genere">
+                <Typography
+                    variant="h6"
+                    color="textSecondary"
+                    aria-label="genere"
+                >
                     Sunday 22:00 (30 min)
                 </Typography>
-                <br/>
+                <br />
                 <Divider variant="middle" />
-                <br/>
+                <br />
                 <Typography variant="subtitle1" color="textSecondary">
-                    premiere:<strong> 2012-04-15</strong><br/>
-                    network:<strong> HBO </strong><br/>
-                    country:<strong> United States </strong><br/>
-                    status:<strong> Ended </strong><br/>
+                    premiere:<strong> 2012-04-15</strong>
+                    <br />
+                    network:<strong> HBO </strong>
+                    <br />
+                    country:<strong> United States </strong>
+                    <br />
+                    status:<strong> Ended </strong>
+                    <br />
                 </Typography>
             </CardContent>
             <CardMedia
                 className={classes.cover}
                 image="http://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg"
                 title="Mad Max album cover"
-            >
-                   
-            </CardMedia>
+            />
             <CardContent className={classes.content}>
                 <Typography variant="body1" color="textSecondary">
-                    <p>
-                        This Emmy winning series is a comic look at the
-                        assorted humiliations and rare triumphs of a group
-                        of girls in their 20s.
-                    </p>
+                    This Emmy winning series is a comic look at the assorted
+                    humiliations and rare triumphs of a group of girls in
+                    their 20s.
                 </Typography>
             </CardContent>
         </Card>

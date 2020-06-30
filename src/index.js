@@ -1,18 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import App from './Components/App';
+
+import reducer from './store/reducer';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+
 import './index.css';
 
-import CssBaseline from '@material-ui/core/CssBaseline';
-import {ThemeProvider} from '@material-ui/core/styles';
-import App from './Components/App';
-import theme from './assets/theme';
+const store = createStore(reducer);
 
 ReactDOM.render(
-    <ThemeProvider theme={theme}>
-        <CssBaseline />
-            <React.StrictMode>
-                <App />
-            </React.StrictMode>
-    </ThemeProvider>,
+    <Provider store={store}>
+        <React.StrictMode>
+            <App />
+        </React.StrictMode>
+    </Provider>,
     document.getElementById('root')
 );
