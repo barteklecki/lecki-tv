@@ -1,6 +1,7 @@
 import React from 'react';
 
 import MovieList from './MovieList/MovieList';
+import MovieDetails from './MovieDetails/MovieDetails';
 
 import Container from '@material-ui/core/Container';
 import {makeStyles} from '@material-ui/core/styles';

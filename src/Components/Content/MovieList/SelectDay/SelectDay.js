@@ -14,7 +14,6 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: 'row',
         justifyContent: 'start',
         margin: 'auto',
-        padding: '0 1rem',
         overflow: 'auto',
         backgroundColor: theme.palette.background.paper,
     },
@@ -24,20 +23,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const week = [
-    {short: 'Mo', date: '29.06'},
-    {short: 'Tu', date: '30.06'},
-    {short: 'We', date: '1.07'},
-    {short: 'Th', date: '2.07'},
-    {short: 'Fr', date: '3.07'},
-    {short: 'Sa', date: '4.07'},
-    {short: 'Su', date: '5.07'},
-    {short: 'Mo', date: '29.06'},
-    {short: 'Tu', date: '30.06'},
-    {short: 'We', date: '1.07'},
-    {short: 'Th', date: '2.07'},
-    {short: 'Fr', date: '3.07'},
-    {short: 'Sa', date: '4.07'},
-    {short: 'Su', date: '5.07'},
+    {id: 1, short: 'Mo'},
+    {id: 2, short: 'Tu'},
+    {id: 3, short: 'We'},
+    {id: 4, short: 'Th'},
+    {id: 5, short: 'Fr'},
+    {id: 6, short: 'Sa'},
+    {id: 7, short: 'Su'},
 ];
 
 const SelectDay = () => {
@@ -47,8 +39,8 @@ const SelectDay = () => {
         <List component="nav" className={classes.root} aria-label="filter movie by day of week">
         {
             week.map((day) => (
-                <ListItem button key={day.date}  className={classes.item}>
-                    <ListItemText primary={day.short} secondary={day.date}/>
+                <ListItem button key={day.id}  className={classes.item}>
+                    <ListItemText primary={day.short}/>
                 </ListItem>
             ))
         }
