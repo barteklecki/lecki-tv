@@ -1,8 +1,8 @@
 import React from 'react';
 
+import SelectDay from './SelectDay/SelectDay';
 import MovieListHead from './MovieListHead/MovieListHead';
 import Movie from './Movie/Movie';
-
 
 import TableContainer from '@material-ui/core/TableContainer';
 import Table from '@material-ui/core/Table';
@@ -25,14 +25,17 @@ function MovieList() {
     const classes = useStyles();
 
     return (
-        <TableContainer className={classes.root}>
-            <Table className={classes.table} aria-labelledby="tableTitle" aria-label="table title">
-                <MovieListHead />
-                <TableBody>
-                    <Movie />
-                </TableBody>
-            </Table>
-        </TableContainer>
+        <>
+            <SelectDay />
+            <TableContainer className={classes.root}>
+                <Table className={classes.table} aria-labelledby="tableTitle" aria-label="table title">
+                    <MovieListHead />
+                    <TableBody>
+                        <Movie />
+                    </TableBody>
+                </Table>
+            </TableContainer>
+        </>
     );
 }
 
