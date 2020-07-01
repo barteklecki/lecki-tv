@@ -20,7 +20,7 @@ export default (theme) => ({
     },
     content: {
         textAlign: 'left',
-        margin: '2rem',
+        margin: '1rem',
     },
     rating: {
         display: 'flex',

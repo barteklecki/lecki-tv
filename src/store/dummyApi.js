@@ -201,7 +201,7 @@ const dummyReturn = [
             schedule: {time: '18:00', days: ['Tuesday']},
             rating: {average: 6.4},
             weight: 87,
-            network: null,
+            network: '',
             webChannel: {
                 id: 274,
                 name: 'Brat',

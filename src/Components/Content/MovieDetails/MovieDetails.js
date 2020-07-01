@@ -16,10 +16,10 @@ import styles from './styles';
 
 const MovieDetails = (props) => {
 
-    const { 
-        classes, 
+    const {
+        classes,
         match: {
-            params: { id }, 
+            params: { id },
         },
         movieList,
     } = props;
@@ -27,27 +27,21 @@ const MovieDetails = (props) => {
     const [{
         score,
         show: {
-            name,
-            genres,
-            rating: { average: rating},
+            name = '-',
+            genres = ['-'],
+            rating: { average: rating = 0 },
             schedule: {
-                days,
-                time
+                days = [],
+                time = '-',
             },
-            runtime,
-            premiered,
-            network: {
-                name: network,
-                country: { name: country },
-            },
-            status,
+            runtime = 0,
+            premiered = '-',
+            status = '-',
             image: { medium: image },
-            summary,
+            summary = '',
         }
     }] = findRecordById(movieList, id);
 
-    console.log(findRecordById(movieList, id));
-    console.log(days, time);
 
     return (
         <Card className={classes.root}>
@@ -86,10 +80,6 @@ const MovieDetails = (props) => {
                 <br />
                 <Typography variant="subtitle1" color="textSecondary">
                     premiere:<strong> {premiered}</strong>
-                    <br />
-                    network:<strong> {network}</strong>
-                    <br />
-                    country:<strong> {country}</strong>
                     <br />
                     status:<strong> {status}</strong>
                     <br />

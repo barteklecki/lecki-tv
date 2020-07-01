@@ -33,7 +33,11 @@ const Movie = (props) => {
     const classes = useStyles();
 
     return (
-                    <TableRow className={classes.row} hover>
+                    <TableRow 
+                        className={classes.row} 
+                        hover
+                        onClick={() => props.click(props.id)}
+                    >
                         <TableCell 
                             TableRow 
                             className={classes.scoreCell} 

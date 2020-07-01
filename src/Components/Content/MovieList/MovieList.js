@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {useHistory} from 'react-router-dom';
 
 import SelectDay from './SelectDay/SelectDay';
 import MovieListHead from './MovieListHead/MovieListHead';
@@ -24,7 +25,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const MovieList = (props) => {
+    
+    let history = useHistory();
     const classes = useStyles();
+
+    const clickItemHandler = (id) => {
+        console.log(id);
+        history.push(`info/${id}`);
+    };
 
     let list = '';
     if (props.movieList.length) {
@@ -33,23 +41,23 @@ const MovieList = (props) => {
                 <SelectDay />
                 <TableContainer className={classes.root}>
                     <Table
-                        className={classes.table} 
-                        aria-labelledby="tableTitle" 
+                        className={classes.table}
+                        aria-labelledby="tableTitle"
                         aria-label="table title"
                     >
                         <MovieListHead />
                         <TableBody>
-                            {
-                                props.movieList.map( movie =>
-                                    <Movie
-                                        key={movie.show.id}
-                                        score={movie.score}
-                                        title={movie.show.name}
-                                        genres={movie.show.genres}
-                                        premiere={movie.show.premiered}
-                                    />
-                                )
-                            }
+                            {props.movieList.map((movie) => (
+                                <Movie
+                                    click={clickItemHandler}
+                                    key={movie.show.id}
+                                    id={movie.show.id}
+                                    score={movie.score}
+                                    title={movie.show.name}
+                                    genres={movie.show.genres}
+                                    premiere={movie.show.premiered}
+                                />
+                            ))}
                         </TableBody>
                     </Table>
                 </TableContainer>
@@ -59,8 +67,8 @@ const MovieList = (props) => {
         list = <NotFound />;
     }
 
-    return (list);
-}
+    return list;
+};
 
 const mapStateToProps = (state) => {
     return {
