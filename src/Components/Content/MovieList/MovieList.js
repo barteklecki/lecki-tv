@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import SelectDay from './SelectDay/SelectDay';
 import MovieListHead from './MovieListHead/MovieListHead';
 import Movie from './Movie/Movie';
+import NotFound from '../NotFound/NotFound';
 
 import Table from '@material-ui/core/Table';
 import TableContainer from '@material-ui/core/TableContainer';
@@ -25,30 +26,40 @@ const useStyles = makeStyles((theme) => ({
 const MovieList = (props) => {
     const classes = useStyles();
 
-    return (
-        <>
-            <SelectDay />
-            <TableContainer className={classes.root}>
-                <Table className={classes.table} aria-labelledby="tableTitle" aria-label="table title">
-                    <MovieListHead />
-                    <TableBody>
-                        {
-                            props.movieList.map( movie =>
-                                <Movie
-                                    key={movie.show.id}
-                                    score={movie.score}
-                                    title={movie.show.name}
-                                    genere={movie.show.generes}
-                                    premiere={movie.show.premiered}
-                                />
-                            )
-                        }
-                        <Movie />
-                    </TableBody>
-                </Table>
-            </TableContainer>
-        </>
-    );
+    let list = '';
+    if (props.movieList.length) {
+        list = (
+            <>
+                <SelectDay />
+                <TableContainer className={classes.root}>
+                    <Table
+                        className={classes.table} 
+                        aria-labelledby="tableTitle" 
+                        aria-label="table title"
+                    >
+                        <MovieListHead />
+                        <TableBody>
+                            {
+                                props.movieList.map( movie =>
+                                    <Movie
+                                        key={movie.show.id}
+                                        score={movie.score}
+                                        title={movie.show.name}
+                                        genres={movie.show.genres}
+                                        premiere={movie.show.premiered}
+                                    />
+                                )
+                            }
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+            </>
+        );
+    } else {
+        list = <NotFound />;
+    }
+
+    return (list);
 }
 
 const mapStateToProps = (state) => {
