@@ -272,7 +272,7 @@ const dummyReturn = [
             runtime: 60,
             premiered: '2012-01-04',
             officialSite: null,
-            schedule: {time: '20:00', days: ['Monday']},
+            schedule: {time: '20:00', days: ['Wednesday']},
             rating: {average: 8.7},
             weight: 82,
             network: {

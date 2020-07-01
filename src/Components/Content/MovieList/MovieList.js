@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     },
     table: {
         width: 'auto',
-        minWidth: '800px',
+        minWidth: '750px',
         margin: 'auto',
     },
 }));
