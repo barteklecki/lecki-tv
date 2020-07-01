@@ -1,7 +1,9 @@
 import React from 'react';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 import MovieList from './MovieList/MovieList';
 import MovieDetails from './MovieDetails/MovieDetails';
+import StartingPage from './StartingPage/StartingPage';
 
 import Container from '@material-ui/core/Container';
 import {makeStyles} from '@material-ui/core/styles';
@@ -19,9 +21,17 @@ const Content = () => {
 
     return (
         <Container component="main" className={classes.main}>
-            <MovieList />
+            <Switch>
+                <Route path="/serch/:phrase" component={MovieList} />
+                <Route path="/serch" component={MovieList} />
+                <Route path="/info/:id" component={MovieDetails} />
+                <Route path="/info" component={MovieDetails} />
+                <Route path="/start" component={StartingPage} />
+                <Redirect to="/serch" />
+            </Switch> 
+            
             <br/>
-            <MovieDetails />
+            
         </Container>
     );
 };
