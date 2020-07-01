@@ -8,41 +8,10 @@ import Rating from '@material-ui/lab/Rating';
 import Divider from '@material-ui/core/Divider';
 import Chip from '@material-ui/core/Chip';
 
-import {makeStyles} from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core/styles';
+import styles from './styles';
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        display: 'flex',
-        flexFlow: 'row wrap',
-        justifyContent: 'space-around',
-        maxWidth: '800px',
-        margin: 'auto',
-        padding: '1rem 1rem',
-        borderRadius: '25px',
-    },
-    summary: {
-        minWidth: '50%',
-        textAlign: 'center',
-    },
-    cover: {
-        minWidth: 300,
-        minHeight: 400,
-        borderRadius: '25px',
-        marginTop: '1rem',
-    },
-    content: {
-        textAlign: 'center',
-    },
-    rating: {
-        display: 'flex',
-        alignSelf: 'center',
-        justifyContent: 'center',
-        padding: '1rem',
-    },
-}));
-
-const MovieDetails = () => {
-    const classes = useStyles();
+const MovieDetails = ({classes}) => {
 
     return (
         <Card className={classes.root}>
@@ -106,4 +75,4 @@ const MovieDetails = () => {
     );
 };
 
-export default MovieDetails;
+export default withStyles(styles)(MovieDetails);
