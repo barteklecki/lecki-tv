@@ -19,7 +19,8 @@ export default (theme) => ({
         marginTop: '1rem',
     },
     content: {
-        textAlign: 'center',
+        textAlign: 'left',
+        margin: '2rem',
     },
     rating: {
         display: 'flex',

@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {findRecordById, roundScore, printArray} from '../../../assets/utils';
+import {findRecordById, roundScore, printArray, roundRating} from '../../../assets/utils';
+import ReactHtmlParser from 'react-html-parser';
 
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -24,25 +25,29 @@ const MovieDetails = (props) => {
     } = props;
 
     const [{
-        score, 
+        score,
         show: {
             name,
             genres,
-            // rating: { avrage: rating},
-            // schedule: {
-            //     days,
-            //     time
-            // },
-            // premiered,
-            // network: { name: network },
-            // country: { name: country },
-            // status,
-            // image: { medium: image },
-            // summary,
+            rating: { average: rating},
+            schedule: {
+                days,
+                time
+            },
+            runtime,
+            premiered,
+            network: {
+                name: network,
+                country: { name: country },
+            },
+            status,
+            image: { medium: image },
+            summary,
         }
     }] = findRecordById(movieList, id);
 
     console.log(findRecordById(movieList, id));
+    console.log(days, time);
 
     return (
         <Card className={classes.root}>
@@ -64,7 +69,7 @@ const MovieDetails = (props) => {
                     <Rating
                         readOnly
                         name="half-rating-read"
-                        defaultValue={3.5}
+                        value={roundRating(rating)}
                         precision={0.5}
                         aria-label="rating"
                     />
@@ -74,32 +79,30 @@ const MovieDetails = (props) => {
                     color="textSecondary"
                     aria-label="genere"
                 >
-                    Sunday 22:00 (30 min)
+                    {printArray(days)} {time} ({runtime}min)
                 </Typography>
                 <br />
                 <Divider variant="middle" />
                 <br />
                 <Typography variant="subtitle1" color="textSecondary">
-                    premiere:<strong> 2012-04-15</strong>
+                    premiere:<strong> {premiered}</strong>
                     <br />
-                    network:<strong> HBO </strong>
+                    network:<strong> {network}</strong>
                     <br />
-                    country:<strong> United States </strong>
+                    country:<strong> {country}</strong>
                     <br />
-                    status:<strong> Ended </strong>
+                    status:<strong> {status}</strong>
                     <br />
                 </Typography>
             </CardContent>
             <CardMedia
                 className={classes.cover}
-                image="http://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg"
-                title="Mad Max album cover"
+                image={image}
+                title={name}
             />
             <CardContent className={classes.content}>
                 <Typography variant="body1" color="textSecondary">
-                    This Emmy winning series is a comic look at the assorted
-                    humiliations and rare triumphs of a group of girls in their
-                    20s.
+                    {ReactHtmlParser(summary)}
                 </Typography>
             </CardContent>
         </Card>
