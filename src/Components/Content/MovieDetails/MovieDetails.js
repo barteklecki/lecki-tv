@@ -1,4 +1,6 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {findRecordById, roundScore, printArray} from '../../../assets/utils';
 
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -11,24 +13,53 @@ import Chip from '@material-ui/core/Chip';
 import {withStyles} from '@material-ui/core/styles';
 import styles from './styles';
 
-const MovieDetails = ({classes}) => {
+const MovieDetails = (props) => {
+
+    const { 
+        classes, 
+        match: {
+            params: { id }, 
+        },
+        movieList,
+    } = props;
+
+    const [{
+        score, 
+        show: {
+            name,
+            genres,
+            // rating: { avrage: rating},
+            // schedule: {
+            //     days,
+            //     time
+            // },
+            // premiered,
+            // network: { name: network },
+            // country: { name: country },
+            // status,
+            // image: { medium: image },
+            // summary,
+        }
+    }] = findRecordById(movieList, id);
+
+    console.log(findRecordById(movieList, id));
 
     return (
         <Card className={classes.root}>
             <CardContent className={classes.summary}>
                 <br />
                 <Typography component="h4" variant="h4" aria-label="title">
-                    Girls: Live From Space
+                   {name}
                 </Typography>
                 <Typography
                     variant="subtitle1"
                     color="textSecondary"
                     aria-label="genere"
                 >
-                    Drama, Romance
+                    {printArray(genres)}
                 </Typography>
                 <div className={classes.rating}>
-                    <Chip label="17.4" color="secondary" size="small" />
+                    <Chip label={roundScore(score, 1)} color="secondary" size="small" />
                     &nbsp;&nbsp;/&nbsp;&nbsp;
                     <Rating
                         readOnly
@@ -67,12 +98,16 @@ const MovieDetails = ({classes}) => {
             <CardContent className={classes.content}>
                 <Typography variant="body1" color="textSecondary">
                     This Emmy winning series is a comic look at the assorted
-                    humiliations and rare triumphs of a group of girls in
-                    their 20s.
+                    humiliations and rare triumphs of a group of girls in their
+                    20s.
                 </Typography>
             </CardContent>
         </Card>
     );
 };
 
-export default withStyles(styles)(MovieDetails);
+function mapStateToProps(state) {
+    return { movieList: state.movieList, };
+}
+
+export default withStyles(styles)(connect(mapStateToProps)(MovieDetails));
