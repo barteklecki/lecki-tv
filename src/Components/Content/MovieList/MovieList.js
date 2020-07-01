@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {useHistory} from 'react-router-dom';
+import {filterByDay} from '../../../assets/utils';
 
 import SelectDay from './SelectDay/SelectDay';
 import MovieListHead from './MovieListHead/MovieListHead';
@@ -29,16 +30,17 @@ const MovieList = (props) => {
     let history = useHistory();
     const classes = useStyles();
 
+    let filteredList = filterByDay(props.movieList, props.dayFilter) ;
+
     const clickItemHandler = (id) => {
         console.log(id);
         history.push(`info/${id}`);
     };
 
     let list = '';
-    if (props.movieList.length) {
+    if (filteredList.length) {
         list = (
             <>
-                <SelectDay />
                 <TableContainer className={classes.root}>
                     <Table
                         className={classes.table}
@@ -47,7 +49,7 @@ const MovieList = (props) => {
                     >
                         <MovieListHead />
                         <TableBody>
-                            {props.movieList.map((movie) => (
+                            {filteredList.map((movie) => (
                                 <Movie
                                     click={clickItemHandler}
                                     key={movie.show.id}
@@ -67,11 +69,17 @@ const MovieList = (props) => {
         list = <NotFound />;
     }
 
-    return list;
+    return (
+        <>
+            <SelectDay />
+            {list}
+        </>
+    );
 };
 
 const mapStateToProps = (state) => {
     return {
+        dayFilter: state.dayFilter,
         movieList: state.movieList,
     };
 };

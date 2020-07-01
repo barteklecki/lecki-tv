@@ -7,9 +7,10 @@ import { ReactComponent as NotFoundIcon } from '../../../assets/not-found.svg'
 
 const style = {
     display: 'flex',
-    width: 400,
-    height: 400,
+    width: 300,
+    height: 300,
     margin: 'auto',
+    marginTop: '1rem',
     justifyContent: 'center',
     textAlign: 'center',
     alignItems: 'center', 
@@ -17,8 +18,8 @@ const style = {
 }
 
 const icon = {
-    width: 150,
-    height: 150,
+    width: 100,
+    height: 100,
     filter: 'invert(100%)',
 }
 
@@ -28,7 +29,7 @@ const NotFound = () => {
             <CardContent>
                 <NotFoundIcon style={icon} /><br/>
                 <Typography variant="h6" gutterBottom>
-                    No results for this phrase! <br/>
+                    No results! <br/>
                 </Typography>
             </CardContent>
         </Card>

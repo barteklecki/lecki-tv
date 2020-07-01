@@ -34,6 +34,7 @@ const Movie = (props) => {
 
     return (
                     <TableRow 
+                        component="tr"
                         className={classes.row} 
                         hover
                         onClick={() => props.click(props.id)}
