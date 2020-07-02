@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {Redirect} from 'react-router-dom';
 import {findRecordById, roundScore, printArray, roundRating} from '../../../utils';
 import ReactHtmlParser from 'react-html-parser';
 
@@ -23,6 +24,11 @@ const MovieDetails = (props) => {
         },
         movieList,
     } = props;
+
+    if(!movieList.length) {
+        console.log('Empty data list - redirecting to homepage >>>');
+        return <Redirect to="/" />
+    }
 
     const [{
         score,

@@ -54,4 +54,8 @@ export default (theme) => ({
             },
         },
     },
+    button: {
+        borderRadius: '20px',
+        marginLeft: 'auto',
+    },
 });

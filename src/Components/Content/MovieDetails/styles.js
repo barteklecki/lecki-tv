@@ -10,6 +10,7 @@ export default (theme) => ({
     },
     summary: {
         minWidth: '50%',
+        maxWidth: '450px',
         textAlign: 'center',
     },
     cover: {

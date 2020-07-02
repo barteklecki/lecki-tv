@@ -28,7 +28,7 @@ const reducer = (state = initiallState, action) => {
                 dayFilter: newDayFilter,
             };
         case actions.DISPLAY_ERROR:
-            console.log('DISPLAY ERROR:', action.payload);
+            console.log('ERROR:', action.payload);
             return state;
         case actions.SET_FETCHING_FLAG:
             return {

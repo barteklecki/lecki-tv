@@ -22,7 +22,6 @@ const Content = () => {
     return (
         <Container component="main" className={classes.main}>
             <Switch>
-                <Route path="/search/:phrase" component={MovieList} />
                 <Route path="/search" component={MovieList} />
                 <Route path="/info/:id" component={MovieDetails} />
                 <Route path="/info" component={MovieDetails} />

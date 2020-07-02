@@ -1,9 +1,12 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {useHistory} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 import * as actions from '../../store/actions';
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
+import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
@@ -15,7 +18,13 @@ import styles from './styles';
 
 const Header = (props) => {
 
+    let history = useHistory();
     const {classes, isListFetching, onFetchList} = props;
+
+    const clickReturnHandler = (id) => {
+        console.log(id);
+        history.goBack();
+    };
 
     const searchKeyDownHandler = (event) => {
             if (event.key === 'Enter') {
@@ -42,21 +51,35 @@ const Header = (props) => {
                     <Typography className={classes.title} variant="h6" noWrap>
                         LTV
                     </Typography>
-                    <div className={classes.search}>
-                        <div className={classes.searchIcon}>
-                            <SearchIcon />
-                        </div>
-                        <InputBase
-                            onKeyPress={searchKeyDownHandler}
-                            disabled={isListFetching}
-                            placeholder="Search…"
-                            classes={{
-                                root: classes.inputRoot,
-                                input: classes.inputInput,
-                            }}
-                            inputProps={{'aria-label': 'search'}}
-                        />
-                    </div>
+                    <Switch>
+                        <Route path="/info" render={ () =>
+                            <Button
+                                onClick={clickReturnHandler}
+                                variant="outlined"
+                                className={classes.button}
+                                startIcon={<SearchIcon />}
+                            >
+                                Back to search
+                            </Button>
+                        } />
+                        <Route path="/" render={ () => 
+                            <div className={classes.search}>
+                                <div className={classes.searchIcon}>
+                                    <SearchIcon />
+                                </div>
+                                <InputBase
+                                    onKeyPress={searchKeyDownHandler}
+                                    disabled={isListFetching}
+                                    placeholder="Search…"
+                                    classes={{
+                                        root: classes.inputRoot,
+                                        input: classes.inputInput,
+                                    }}
+                                    inputProps={{'aria-label': 'search'}}
+                                />
+                            </div>
+                        } />
+                    </Switch>
                 </Toolbar>
             </AppBar>
         </div>
