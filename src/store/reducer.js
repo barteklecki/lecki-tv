@@ -14,11 +14,6 @@ const reducer = (state = initiallState, action) => {
             return {
                 ...state,
             };
-        case actions.UPDATE_LIST:
-            console.log(state);
-            return {
-                ...state,
-            };
         case actions.SET_DAY_FILTER:
             console.log('set filter');
             let newDayFilter = '';

@@ -12,6 +12,15 @@ import {withStyles} from '@material-ui/core/styles';
 import styles from './styles';
 
 const Header = (props) => {
+
+    const searchKeyDownHandler = (event) => {
+            console.log(`Pressed keyCode ${event.key}`);
+            if (event.key === 'Enter') {
+              // Do code here
+              event.preventDefault();
+            }
+    }
+
     const {classes} = props;
     return (
         <div>
@@ -33,6 +42,7 @@ const Header = (props) => {
                             <SearchIcon />
                         </div>
                         <InputBase
+                            onKeyPress={searchKeyDownHandler}
                             placeholder="Search…"
                             classes={{
                                 root: classes.inputRoot,
