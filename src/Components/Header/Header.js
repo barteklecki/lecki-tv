@@ -20,7 +20,7 @@ const Header = (props) => {
     const searchKeyDownHandler = (event) => {
             if (event.key === 'Enter') {
                 if(event.target.value) {
-                    console.log('Search: ',event.target.value);
+                    console.log('Search:', event.target.value);
                     onFetchList(event.target.value);
                     event.preventDefault();
                 }
