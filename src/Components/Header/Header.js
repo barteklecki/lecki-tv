@@ -1,4 +1,6 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import * as actions from '../../store/actions';
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -13,15 +15,18 @@ import styles from './styles';
 
 const Header = (props) => {
 
+    const {classes, isListFetching, onFetchList} = props;
+
     const searchKeyDownHandler = (event) => {
-            console.log(`Pressed keyCode ${event.key}`);
             if (event.key === 'Enter') {
-              // Do code here
-              event.preventDefault();
+                if(event.target.value) {
+                    console.log('Search: ',event.target.value);
+                    onFetchList(event.target.value);
+                    event.preventDefault();
+                }
             }
     }
 
-    const {classes} = props;
     return (
         <div>
             <AppBar position="static" className={classes.root}>
@@ -43,6 +48,7 @@ const Header = (props) => {
                         </div>
                         <InputBase
                             onKeyPress={searchKeyDownHandler}
+                            disabled={isListFetching}
                             placeholder="Search…"
                             classes={{
                                 root: classes.inputRoot,
@@ -57,4 +63,17 @@ const Header = (props) => {
     );
 };
 
-export default withStyles(styles)(Header);
+const mapStateToProps = (state) => {
+    return {
+        isListFetching: state.isListFetching,
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onFetchList: (phrase) => dispatch(actions.fetchList(phrase)),
+    };
+};
+
+const connector = connect(mapStateToProps, mapDispatchToProps);
+export default withStyles(styles)(connector(Header));

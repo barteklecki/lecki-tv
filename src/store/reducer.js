@@ -10,9 +10,10 @@ const initiallState = {
 const reducer = (state = initiallState, action) => {
     switch( action.type ) {
         case actions.FETCH_LIST:
-            console.log(state);
+            console.log('FETCH_LIST:', action.payload);
             return {
                 ...state,
+                movieList: action.payload.movieList,
             };
         case actions.SET_DAY_FILTER:
             console.log('set filter');
@@ -24,6 +25,11 @@ const reducer = (state = initiallState, action) => {
                 ...state,
                 dayFilter: newDayFilter,
             };
+            case actions.DISPLAY_ERROR:
+                console.log('DISPLAY ERROR:', action.payload);
+                return {
+                    ...state,
+                };
         default:
             console.log('[Reducer: idle action]');
             return state;
