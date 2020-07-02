@@ -84,15 +84,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        onSelectMovie: (id) =>
-            dispatch({
-                type: 'SELECT_MOVIE',
-                payload: {id: id},
-            }),
-    };
-};
-
-const connector = connect(mapStateToProps, mapDispatchToProps);
-export default connector(MovieList);
+export default connect(mapStateToProps)(MovieList);

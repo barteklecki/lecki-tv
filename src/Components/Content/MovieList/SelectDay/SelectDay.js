@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import * as actions from '../../../../store/actions';
 
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -67,11 +68,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onSetDayFilter: (day) =>
-            dispatch({
-                type: 'SET_DAY_FILTER',
-                payload: {day: day},
-            }),
+        onSetDayFilter: (day) => dispatch(actions.setDayFilter(day)),
     };
 };
 
