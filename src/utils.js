@@ -16,3 +16,6 @@ export const filterByDay = (arr, day) => {
         }
         return arr;
 }
+
+export const validateString = (data, key) => data ? data[key] : '';
+export const validateArray = (data, key) => data ? data[key] : [];

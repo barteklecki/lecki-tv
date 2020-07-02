@@ -5,7 +5,7 @@ export default (theme) => ({
         justifyContent: 'space-around',
         maxWidth: '800px',
         margin: 'auto',
-        padding: '1rem 1rem',
+        padding: '1rem 1rem 2rem 1rem',
         borderRadius: '25px',
     },
     summary: {
@@ -17,6 +17,7 @@ export default (theme) => ({
         minWidth: 300,
         minHeight: 400,
         borderRadius: '25px',
+        backgroundColor: '#12121210',
         marginTop: '1rem',
     },
     content: {

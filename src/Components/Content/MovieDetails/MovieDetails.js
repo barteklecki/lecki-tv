@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
-import {findRecordById, roundScore, printArray, roundRating} from '../../../utils';
+import {findRecordById, roundScore, printArray, roundRating, validateString, validateArray} from '../../../utils';
 import ReactHtmlParser from 'react-html-parser';
 
 import Card from '@material-ui/core/Card';
@@ -35,19 +35,21 @@ const MovieDetails = (props) => {
         show: {
             name = '-',
             genres = ['-'],
-            rating: { average: rating = 0 },
-            schedule: {
-                days = [],
-                time = '-',
-            },
+            rating,
+            schedule,
             runtime = 0,
             premiered = '-',
             status = '-',
-            image: { medium: image },
+            image = '',
             summary = '',
         }
     }] = findRecordById(movieList, id);
 
+    const ratingAverage = validateString(rating, 'average');
+    const days = validateArray(schedule, 'days');
+    const time = validateString(schedule, 'time');
+    const imageMedium = validateString(image, 'medium');
+    const imageUrl = imageMedium ? imageMedium : validateString(image, 'original');
 
     return (
         <Card className={classes.root}>
@@ -69,7 +71,7 @@ const MovieDetails = (props) => {
                     <Rating
                         readOnly
                         name="half-rating-read"
-                        value={roundRating(rating)}
+                        value={roundRating(ratingAverage)}
                         precision={0.5}
                         aria-label="rating"
                     />
@@ -79,7 +81,7 @@ const MovieDetails = (props) => {
                     color="textSecondary"
                     aria-label="genere"
                 >
-                    {printArray(days)} {time} ({runtime}min)
+                    {printArray(days)} {time} {runtime ? `(${runtime}min)` : null}
                 </Typography>
                 <br />
                 <Divider variant="middle" />
@@ -93,7 +95,7 @@ const MovieDetails = (props) => {
             </CardContent>
             <CardMedia
                 className={classes.cover}
-                image={image}
+                image={imageUrl}
                 title={name}
             />
             <CardContent className={classes.content}>
