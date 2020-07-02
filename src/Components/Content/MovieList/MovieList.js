@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {useHistory} from 'react-router-dom';
-import {filterByDay} from '../../../assets/utils';
+import {filterByDay} from '../../../utils';
 
 import SelectDay from './SelectDay/SelectDay';
 import MovieListHead from './MovieListHead/MovieListHead';

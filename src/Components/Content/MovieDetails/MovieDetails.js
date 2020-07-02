@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {findRecordById, roundScore, printArray, roundRating} from '../../../assets/utils';
+import {findRecordById, roundScore, printArray, roundRating} from '../../../utils';
 import ReactHtmlParser from 'react-html-parser';
 
 import Card from '@material-ui/core/Card';

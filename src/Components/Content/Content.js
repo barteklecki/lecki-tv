@@ -22,12 +22,12 @@ const Content = () => {
     return (
         <Container component="main" className={classes.main}>
             <Switch>
-                <Route path="/serch/:phrase" component={MovieList} />
-                <Route path="/serch" component={MovieList} />
+                <Route path="/search/:phrase" component={MovieList} />
+                <Route path="/search" component={MovieList} />
                 <Route path="/info/:id" component={MovieDetails} />
                 <Route path="/info" component={MovieDetails} />
                 <Route path="/start" component={StartingPage} />
-                <Redirect to="/serch" />
+                <Redirect to="/search" />
             </Switch> 
             
             <br/>
