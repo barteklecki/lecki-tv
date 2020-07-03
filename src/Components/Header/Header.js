@@ -42,7 +42,7 @@ const Header = (props) => {
 
     return (
         <div>
-            <AppBar position="static" className={classes.root}>
+            <AppBar position="static" color="secondary" className={classes.root}>
                 <Toolbar>
                     <IconButton
                         onClick={clickLogoHandler}

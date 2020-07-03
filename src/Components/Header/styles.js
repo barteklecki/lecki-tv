@@ -18,7 +18,7 @@ export default (theme) => ({
     search: {
         position: 'relative',
         borderRadius: '20px',
-        backgroundColor: fade(theme.palette.common.white, 0.15),
+        backgroundColor: fade(theme.palette.common.white, 0.40),
         '&:hover': {
             backgroundColor: fade(theme.palette.common.white, 0.25),
         },

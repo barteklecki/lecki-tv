@@ -1,38 +1,32 @@
 import React from 'react';
 
-import CardContent from '@material-ui/core/CardContent';
+import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
-import { ReactComponent as NotFoundIcon } from '../../../assets/not-found.svg'
+import { ReactComponent as NotFoundIcon } from '../../../assets/not-found2.svg'
 
 const style = {
-    display: 'flex',
-    width: 300,
-    height: 300,
+    width: 400,
+    height: 400,
     margin: 'auto',
     marginTop: '1rem',
     justifyContent: 'center',
     backgroundColor: 'transparent',
-    opacity: '10%',
     textAlign: 'center',
 }
 
 const icon = {
-    width: 100,
-    height: 100,
-    filter: 'invert(100%)',
+    maxWidth: 350,
 
 }
 
 const NotFound = () => {
     return (
-        <div style={style}>
-            <CardContent>
-                <NotFoundIcon style={icon} /><br/>
-                <Typography variant="h6" gutterBottom>
-                    No results! <br/>
-                </Typography>
-            </CardContent>
-        </div>
+        <Container style={style}>
+            <NotFoundIcon style={icon} /><br/>
+            <Typography variant="h6" gutterBottom>
+                No results! <br/>
+            </Typography>
+        </Container>
     );
 }
 
