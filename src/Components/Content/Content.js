@@ -28,9 +28,6 @@ const Content = () => {
                 <Route path="/start" component={StartingPage} />
                 <Redirect to="/start" />
             </Switch> 
-            
-            <br/>
-            
         </Container>
     );
 };

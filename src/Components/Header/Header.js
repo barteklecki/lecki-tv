@@ -25,6 +25,10 @@ const Header = (props) => {
         history.goBack();
     };
 
+    const clickLogoHandler = () => {
+        history.push('/');
+    };
+    
     const searchKeyDownHandler = (event) => {
         if (event.key === 'Enter') {
             if (event.target.value) {
@@ -41,6 +45,7 @@ const Header = (props) => {
             <AppBar position="static" className={classes.root}>
                 <Toolbar>
                     <IconButton
+                        onClick={clickLogoHandler}
                         edge="start"
                         className={classes.menuButton}
                         color="inherit"
