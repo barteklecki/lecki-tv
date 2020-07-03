@@ -26,7 +26,7 @@ const Content = () => {
                 <Route path="/info/:id" component={MovieDetails} />
                 <Route path="/info" component={MovieDetails} />
                 <Route path="/start" component={StartingPage} />
-                <Redirect to="/search" />
+                <Redirect to="/start" />
             </Switch> 
             
             <br/>

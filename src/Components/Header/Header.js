@@ -17,7 +17,6 @@ import {withStyles} from '@material-ui/core/styles';
 import styles from './styles';
 
 const Header = (props) => {
-
     let history = useHistory();
     const {classes, isListFetching, onFetchList} = props;
 
@@ -27,14 +26,15 @@ const Header = (props) => {
     };
 
     const searchKeyDownHandler = (event) => {
-            if (event.key === 'Enter') {
-                if(event.target.value) {
-                    console.log('Search:', event.target.value);
-                    onFetchList(event.target.value);
-                    event.preventDefault();
-                }
+        if (event.key === 'Enter') {
+            if (event.target.value) {
+                console.log('Search:', event.target.value);
+                history.push('/search');
+                onFetchList(event.target.value);
+                event.preventDefault();
             }
-    }
+        }
+    };
 
     return (
         <div>
@@ -52,33 +52,39 @@ const Header = (props) => {
                         LTV
                     </Typography>
                     <Switch>
-                        <Route path="/info" render={ () =>
-                            <Button
-                                onClick={clickReturnHandler}
-                                variant="outlined"
-                                className={classes.button}
-                                startIcon={<SearchIcon />}
-                            >
-                                Back to search
-                            </Button>
-                        } />
-                        <Route path="/" render={ () => 
-                            <div className={classes.search}>
-                                <div className={classes.searchIcon}>
-                                    <SearchIcon />
+                        <Route
+                            path="/info"
+                            render={() => (
+                                <Button
+                                    onClick={clickReturnHandler}
+                                    variant="outlined"
+                                    className={classes.button}
+                                    startIcon={<SearchIcon />}
+                                >
+                                    Back to search
+                                </Button>
+                            )}
+                        />
+                        <Route
+                            path="/"
+                            render={() => (
+                                <div className={classes.search}>
+                                    <div className={classes.searchIcon}>
+                                        <SearchIcon />
+                                    </div>
+                                    <InputBase
+                                        onKeyPress={searchKeyDownHandler}
+                                        disabled={isListFetching}
+                                        placeholder="Search…"
+                                        classes={{
+                                            root: classes.inputRoot,
+                                            input: classes.inputInput,
+                                        }}
+                                        inputProps={{'aria-label': 'search'}}
+                                    />
                                 </div>
-                                <InputBase
-                                    onKeyPress={searchKeyDownHandler}
-                                    disabled={isListFetching}
-                                    placeholder="Search…"
-                                    classes={{
-                                        root: classes.inputRoot,
-                                        input: classes.inputInput,
-                                    }}
-                                    inputProps={{'aria-label': 'search'}}
-                                />
-                            </div>
-                        } />
+                            )}
+                        />
                     </Switch>
                 </Toolbar>
             </AppBar>
