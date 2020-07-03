@@ -3,48 +3,28 @@ import React from 'react';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
-import TableSortLabel from '@material-ui/core/TableSortLabel';
+
+const config = [
+    {id: 1, name: 'Score'},
+    {id: 2, name: 'Title'},
+    {id: 3, name: 'Genres'},
+    {id: 4, name: 'Premiere'},
+];
+
+const printTabHeader = config.map( cell => 
+    <TableCell key={cell.id}>
+                    { cell.name }
+    </TableCell>
+);
 
 const MovieListHead = () => {
-    return (
-        <TableHead>
-            <TableRow>
-                <TableCell align={'left'} padding={'default'} sortDirection={'asc'}>
-                    <TableSortLabel
-                        active={true}
-                        disabled={true}
-                        direction="desc"
-                    >
-                        Score
-                    </TableSortLabel>
-                </TableCell>
-                <TableCell align={'left'} padding={'default'}>
-                    <TableSortLabel
-                        active={false}
-                        disabled={true}
-                    >
-                        Title
-                    </TableSortLabel>
-                </TableCell>
-                <TableCell align={'left'} padding={'default'} sortDirection={false}>
-                    <TableSortLabel
-                        active={false}
-                        disabled={true}
-                    >
-                        Genere
-                    </TableSortLabel>
-                </TableCell>
-                <TableCell align={'left'} padding={'default'} sortDirection={false}>
-                    <TableSortLabel
-                        active={false}
-                        disabled={true}
-                    >
-                        Premiere
-                    </TableSortLabel>
-                </TableCell>
-            </TableRow>
-        </TableHead>
-    );
+return (
+    <TableHead>
+        <TableRow>
+            { printTabHeader }
+        </TableRow>
+    </TableHead>
+);
 }
 
 export default MovieListHead;

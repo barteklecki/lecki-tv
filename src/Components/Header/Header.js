@@ -20,7 +20,6 @@ const Header = ({ classes, isListFetching, onFetchList }) => {
     let history = useHistory();
 
     const clickReturnHandler = id => {
-        console.log(id);
         history.goBack();
     };
 
