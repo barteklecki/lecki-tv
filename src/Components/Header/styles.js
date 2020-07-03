@@ -4,23 +4,29 @@ export default (theme) => ({
     root: {
         flexGrow: 1,
         textAlign: 'left',
+        backgroundColor: theme.palette.primary.main,
     },
     menuButton: {
         marginRight: theme.spacing(2),
+        marginTop: 'auto',
+        marginBottom: 'auto',
     },
     title: {
         flexGrow: 1,
         display: 'none',
         [theme.breakpoints.up('sm')]: {
             display: 'block',
+            marginTop: 'auto',
+            marginBottom: 'auto',
+            fontWeight: 'bold',
         },
     },
     search: {
         position: 'relative',
         borderRadius: '20px',
-        backgroundColor: fade(theme.palette.common.white, 0.40),
+        backgroundColor: fade(theme.palette.common.white, 0.5),
         '&:hover': {
-            backgroundColor: fade(theme.palette.common.white, 0.25),
+            backgroundColor: fade(theme.palette.common.white, 0.4),
         },
         marginLeft: 0,
         width: '100%',
@@ -56,6 +62,8 @@ export default (theme) => ({
     },
     button: {
         borderRadius: '20px',
+        borderWeight: '3px',
         marginLeft: 'auto',
+        backgroundColor: fade(theme.palette.common.white, 0.2)
     },
 });

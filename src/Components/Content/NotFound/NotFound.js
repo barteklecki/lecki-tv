@@ -5,8 +5,8 @@ import Typography from '@material-ui/core/Typography';
 import { ReactComponent as NotFoundIcon } from '../../../assets/not-found2.svg'
 
 const style = {
-    width: 400,
-    height: 400,
+    width: '90%',
+    maxWidth: 400,
     margin: 'auto',
     marginTop: '1rem',
     justifyContent: 'center',

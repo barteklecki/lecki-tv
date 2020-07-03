@@ -19,12 +19,12 @@ const useStyles = makeStyles((theme) => ({
         padding: '0.25rem 0.25rem',
         overflow: 'auto',
         backgroundColor: theme.palette.background.paper,
-        borderRadius: '30px 30px',
+        borderRadius: '2rem 2rem',
 
     },
     item: {
         width: 'auto',
-        borderRadius: '50% 50%',
+        borderRadius: '2rem 2rem',
     },
 }));
 
@@ -45,12 +45,12 @@ const SelectDay = (props) => {
         <List component="nav" className={classes.root} aria-label="filter movie by day of week">
         {
             week.map((day) => (
-                <ListItem 
-                    selected={props.dayFilter === day.long}
+                <ListItem
                     onClick={() => props.onSetDayFilter(day.long)}
-                    button 
-                    key={day.id}  
+                    selected={props.dayFilter === day.long}
+                    key={day.id}
                     className={classes.item}
+                    button
                 >
                     <ListItemText primary={day.short}/>
                 </ListItem>
