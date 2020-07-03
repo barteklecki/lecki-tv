@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { roundScore, printArray } from '../../../../utils';
 
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
@@ -8,9 +9,6 @@ import Chip from '@material-ui/core/Chip';
 import {makeStyles} from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
-    row: {
-        //
-    },
     scoreCell: {
         width: 80,
     },
@@ -23,41 +21,33 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const roundScore = (value, decPlaces) => {
-    let score = value * 10 ** decPlaces;
-    score = Math.round(score) / 10 ** decPlaces;
-    return score;
-}
-
-const printArray = (arr) => arr.join(', ');
-
-const Movie = (props) => {
+const Movie = ({ id, score, title, genres, premiere, click }) => {
     const classes = useStyles();
 
     return (
-                    <TableRow 
+                    <TableRow
                         component="tr"
-                        className={classes.row} 
+                        className={classes.row}
                         hover
-                        onClick={() => props.click(props.id)}
+                        onClick={() => click(id)}
                     >
-                        <TableCell 
-                            className={classes.scoreCell} 
-                            id="" 
-                            scope="row" 
+                        <TableCell
+                            className={classes.scoreCell}
+                            id=""
+                            scope="row"
                             padding="default"
                         >
-                            <Chip 
-                                label={roundScore(props.score, 1)} 
-                                className={classes.chip} 
-                                variant="outlined" 
-                                color="secondary" 
-                                size="small" 
+                            <Chip
+                                label={roundScore(score, 1)}
+                                className={classes.chip}
+                                variant="outlined"
+                                color="secondary"
+                                size="small"
                             />
                         </TableCell>
-                        <TableCell align="left">{props.title}</TableCell>
-                        <TableCell align="left">{printArray(props.genres)}</TableCell>
-                        <TableCell align="left">{props.premiere}</TableCell>
+                        <TableCell align="left">{title}</TableCell>
+                        <TableCell align="left">{printArray(genres)}</TableCell>
+                        <TableCell align="left">{premiere}</TableCell>
                     </TableRow>
     );
 }

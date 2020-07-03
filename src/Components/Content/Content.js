@@ -6,9 +6,9 @@ import MovieDetails from './MovieDetails/MovieDetails';
 import StartingPage from './StartingPage/StartingPage';
 
 import Container from '@material-ui/core/Container';
-import {makeStyles} from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
     main: {
         marginTop: theme.spacing(2),
         marginBottom: theme.spacing(2),
@@ -27,7 +27,7 @@ const Content = () => {
                 <Route path="/info" component={MovieDetails} />
                 <Route path="/start" component={StartingPage} />
                 <Redirect to="/start" />
-            </Switch> 
+            </Switch>
         </Container>
     );
 };

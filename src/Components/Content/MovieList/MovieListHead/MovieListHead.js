@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function MovieListHead() {
+const MovieListHead = () => {
     const classes = useStyles();
     return (
         <TableHead className={classes.root}>

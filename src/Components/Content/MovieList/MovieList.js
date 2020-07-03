@@ -27,12 +27,12 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const MovieList = (props) => {
+const MovieList = ({ movieList, dayFilter, errorMessage, onErrorClose }) => {
     
     let history = useHistory();
     const classes = useStyles();
 
-    let filteredList = filterByDay(props.movieList, props.dayFilter) ;
+    let filteredList = filterByDay(movieList, dayFilter) ;
 
     const clickItemHandler = (id) => {
         console.log(id);
@@ -74,8 +74,8 @@ const MovieList = (props) => {
     return (
         <>
             <SelectDay />
-            {list}
-            { props.errorMessage ? <ErrorMessage show={true} click={props.onErrorClose} message={String(props.errorMessage)}/> : null }
+            { list }
+            { errorMessage ? <ErrorMessage show={true} click={onErrorClose} message={String(errorMessage)}/> : null }
         </>
     );
 };

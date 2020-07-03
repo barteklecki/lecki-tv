@@ -5,7 +5,7 @@ import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
 
 import theme from '../../assets/theme';
-import {makeStyles} from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
     footer: {
@@ -15,7 +15,7 @@ const useStyles = makeStyles({
     },
 });
 
-export default function Footer() {
+const Footer = () => {
     const classes = useStyles();
 
     return (
@@ -33,4 +33,6 @@ export default function Footer() {
             </Container>
         </footer>
     );
-}
+};
+
+export default Footer;

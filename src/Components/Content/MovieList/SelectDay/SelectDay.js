@@ -38,7 +38,7 @@ const week = [
     {id: 7, short: 'Su', long: 'Sunday'},
 ];
 
-const SelectDay = (props) => {
+const SelectDay = ({ dayFilter, onSetDayFilter }) => {
     const classes = useStyles();
 
     return (
@@ -46,8 +46,8 @@ const SelectDay = (props) => {
         {
             week.map((day) => (
                 <ListItem
-                    onClick={() => props.onSetDayFilter(day.long)}
-                    selected={props.dayFilter === day.long}
+                    onClick={() => onSetDayFilter(day.long)}
+                    selected={dayFilter === day.long}
                     key={day.id}
                     className={classes.item}
                     button

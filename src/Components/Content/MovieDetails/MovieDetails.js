@@ -15,15 +15,10 @@ import Chip from '@material-ui/core/Chip';
 import {withStyles} from '@material-ui/core/styles';
 import styles from './styles';
 
-const MovieDetails = (props) => {
+const MovieDetails = ({classes, match, movieList}) => {
 
-    const {
-        classes,
-        match: {
-            params: { id },
-        },
-        movieList,
-    } = props;
+    const {params: { id }} = match;
+
 
     if(!movieList.length) {
         console.log('Empty data list - redirecting to homepage >>>');

@@ -1,7 +1,7 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {useHistory} from 'react-router-dom';
-import {Route, Switch} from 'react-router-dom';
+import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import * as actions from '../../store/actions';
 
 import AppBar from '@material-ui/core/AppBar';
@@ -13,14 +13,13 @@ import InputBase from '@material-ui/core/InputBase';
 import LiveTvIcon from '@material-ui/icons/LiveTv';
 import SearchIcon from '@material-ui/icons/Search';
 
-import {withStyles} from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import styles from './styles';
 
-const Header = (props) => {
+const Header = ({ classes, isListFetching, onFetchList }) => {
     let history = useHistory();
-    const {classes, isListFetching, onFetchList} = props;
 
-    const clickReturnHandler = (id) => {
+    const clickReturnHandler = id => {
         console.log(id);
         history.goBack();
     };
@@ -28,8 +27,8 @@ const Header = (props) => {
     const clickLogoHandler = () => {
         history.push('/');
     };
-    
-    const searchKeyDownHandler = (event) => {
+
+    const searchKeyDownHandler = event => {
         if (event.key === 'Enter') {
             if (event.target.value) {
                 console.log('Search:', event.target.value);
@@ -42,7 +41,11 @@ const Header = (props) => {
 
     return (
         <div>
-            <AppBar position="static" color="secondary" className={classes.root}>
+            <AppBar
+                position="static"
+                color="secondary"
+                className={classes.root}
+            >
                 <Toolbar>
                     <IconButton
                         onClick={clickLogoHandler}
@@ -85,7 +88,7 @@ const Header = (props) => {
                                             root: classes.inputRoot,
                                             input: classes.inputInput,
                                         }}
-                                        inputProps={{'aria-label': 'search'}}
+                                        inputProps={{ 'aria-label': 'search' }}
                                     />
                                 </div>
                             )}
@@ -97,15 +100,15 @@ const Header = (props) => {
     );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
     return {
         isListFetching: state.isListFetching,
     };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
     return {
-        onFetchList: (phrase) => dispatch(actions.fetchList(phrase)),
+        onFetchList: phrase => dispatch(actions.fetchList(phrase)),
     };
 };
 

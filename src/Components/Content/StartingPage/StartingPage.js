@@ -1,32 +1,28 @@
 import React from 'react';
-import { ReactComponent as StartPic } from '../../../assets/Curious-bro.svg'
+import { ReactComponent as StartPic } from '../../../assets/Curious-bro.svg';
 
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 
-const icon = {
+const iconStyle = {
     maxWidth: '400px',
-}
+};
 
 const StartingPage = () => {
     return (
         <Container>
-            <br/>
-            <StartPic  style={icon} />
-            <br/>
+            <br />
+            <StartPic style={iconStyle} />
+            <br />
             <Typography component="h4" variant="h4" aria-label="header">
-                   Find your favourite TV show!
+                Find your favourite TV show!
             </Typography>
-            <Typography
-                    variant="h6"
-                    color="textSecondary"
-                    aria-label="genere"
-                >
-                    Use search bar above to start...
+            <Typography variant="h6" color="textSecondary" aria-label="genere">
+                Use search bar above to start...
             </Typography>
-            <br/>
+            <br />
         </Container>
     );
-}
+};
 
 export default StartingPage;
