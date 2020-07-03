@@ -30,7 +30,6 @@ const Header = ({ classes, isListFetching, onFetchList }) => {
     const searchKeyDownHandler = event => {
         if (event.key === 'Enter') {
             if (event.target.value) {
-                console.log('Search:', event.target.value);
                 history.push('/search');
                 onFetchList(event.target.value);
                 event.preventDefault();

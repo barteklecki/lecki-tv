@@ -23,7 +23,6 @@ const MovieList = ({ classes, movieList, dayFilter, errorMessage, onErrorClose }
     let filteredList = filterByDay(movieList, dayFilter);
 
     const clickItemHandler = id => {
-        console.log(id);
         history.push(`info/${id}`);
     };
 

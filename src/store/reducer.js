@@ -10,7 +10,6 @@ const initiallState = {
 const reducer = (state = initiallState, action) => {
     switch (action.type) {
         case actions.FETCH_LIST:
-            console.log('FETCH_LIST:', action.payload);
             return {
                 ...state,
                 movieList: action.payload.movieList,
@@ -27,7 +26,6 @@ const reducer = (state = initiallState, action) => {
                 dayFilter: newDayFilter,
             };
         case actions.DISPLAY_ERROR:
-            console.log('ERROR:', action.payload.message);
             return {
                 ...state,
                 errorMessage: action.payload.message,
@@ -38,7 +36,6 @@ const reducer = (state = initiallState, action) => {
                 isListFetching: true,
             };
         default:
-            console.log('[Reducer: idle action]');
             return state;
     }
 };

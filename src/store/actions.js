@@ -9,7 +9,6 @@ export const SET_FETCHING_FLAG = 'SET_FETCHING_FLAG';
 export const fetchList = (phrase) => {
     const url = `${API_URL}search/shows?q=${encodeURIComponent(phrase)}`;
     setFetchingFlag();
-    console.log(url);
     return (dispatch) => axios.get(url)
         .then((response) => dispatch({
             type: FETCH_LIST,

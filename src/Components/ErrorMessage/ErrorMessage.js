@@ -21,8 +21,6 @@ const ErrorMessage = ({ classes, show = false, click, message }) => {
         setOpen(false);
     };
 
-    console.log('message:', message);
-
     return (
         <div className={classes.root}>
             <Snackbar open={open} onClose={handleClose}>
