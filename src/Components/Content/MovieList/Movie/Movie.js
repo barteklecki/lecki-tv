@@ -40,7 +40,6 @@ const Movie = (props) => {
                         onClick={() => props.click(props.id)}
                     >
                         <TableCell 
-                            TableRow 
                             className={classes.scoreCell} 
                             id="" 
                             scope="row" 

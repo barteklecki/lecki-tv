@@ -6,6 +6,7 @@ const initiallState = {
     dayFilter: '',
     //movieList: [...dummyMovieList],
     movieList: [],
+    errorMessage: '',
 };
 
 const reducer = (state = initiallState, action) => {
@@ -28,8 +29,11 @@ const reducer = (state = initiallState, action) => {
                 dayFilter: newDayFilter,
             };
         case actions.DISPLAY_ERROR:
-            console.log('ERROR:', action.payload);
-            return state;
+            console.log('ERROR:', action.payload.message);
+            return {
+                ...state,
+                errorMessage: action.payload.message,
+            };
         case actions.SET_FETCHING_FLAG:
             return {
                 ...state,

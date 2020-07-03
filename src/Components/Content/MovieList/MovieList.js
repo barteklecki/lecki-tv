@@ -2,11 +2,13 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import {filterByDay} from '../../../utils';
+import {displayError} from '../../../store/actions';
 
 import SelectDay from './SelectDay/SelectDay';
 import MovieListHead from './MovieListHead/MovieListHead';
 import Movie from './Movie/Movie';
 import NotFound from '../NotFound/NotFound';
+import ErrorMessage from '../../ErrorMessage/ErrorMessage';
 
 import Table from '@material-ui/core/Table';
 import TableContainer from '@material-ui/core/TableContainer';
@@ -73,6 +75,7 @@ const MovieList = (props) => {
         <>
             <SelectDay />
             {list}
+            { props.errorMessage ? <ErrorMessage show={true} click={props.onErrorClose} message={String(props.errorMessage)}/> : null }
         </>
     );
 };
@@ -81,7 +84,14 @@ const mapStateToProps = (state) => {
     return {
         dayFilter: state.dayFilter,
         movieList: state.movieList,
+        errorMessage: state.errorMessage,
     };
 };
 
-export default connect(mapStateToProps)(MovieList);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onErrorClose: () => dispatch(displayError('')),
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(MovieList);

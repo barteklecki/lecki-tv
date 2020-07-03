@@ -99,7 +99,7 @@ const MovieDetails = (props) => {
                 title={name}
             />
             <CardContent className={classes.content}>
-                <Typography variant="body1" color="textSecondary">
+                <Typography variant="body1" color="textSecondary" component="div">
                     {ReactHtmlParser(summary)}
                 </Typography>
             </CardContent>
