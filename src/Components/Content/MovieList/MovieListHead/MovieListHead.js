@@ -5,18 +5,9 @@ import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 import TableSortLabel from '@material-ui/core/TableSortLabel';
 
-import {makeStyles} from '@material-ui/core/styles';
-
-const useStyles = makeStyles((theme) => ({
-    root: {
-        //
-    },
-}));
-
 const MovieListHead = () => {
-    const classes = useStyles();
     return (
-        <TableHead className={classes.root}>
+        <TableHead>
             <TableRow>
                 <TableCell align={'left'} padding={'default'} sortDirection={'asc'}>
                     <TableSortLabel

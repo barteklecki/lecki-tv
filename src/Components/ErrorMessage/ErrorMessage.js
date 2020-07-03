@@ -1,23 +1,16 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
-import {makeStyles} from '@material-ui/core/styles';
+
+import { withStyles } from '@material-ui/core/styles';
+import styles from './styles';
 
 function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        width: '100%',
-        '& > * + *': {
-            marginTop: theme.spacing(2),
-        },
-    },
-}));
-
-const ErrorMessage = ({show = false, click, message}) => {
-    const classes = useStyles();
+const ErrorMessage = ({ classes, show = false, click, message }) => {
     const [open, setOpen] = useState(show);
 
     const handleClose = (event, reason) => {
@@ -41,4 +34,4 @@ const ErrorMessage = ({show = false, click, message}) => {
     );
 };
 
-export default ErrorMessage;
+export default withStyles(styles)(ErrorMessage);

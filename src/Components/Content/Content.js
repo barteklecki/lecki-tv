@@ -4,21 +4,12 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import MovieList from './MovieList/MovieList';
 import MovieDetails from './MovieDetails/MovieDetails';
 import StartingPage from './StartingPage/StartingPage';
-
 import Container from '@material-ui/core/Container';
-import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(theme => ({
-    main: {
-        marginTop: theme.spacing(2),
-        marginBottom: theme.spacing(2),
-        alignSelf: 'flex-start',
-    },
-}));
+import { withStyles } from '@material-ui/core/styles';
+import styles from './styles';
 
-const Content = () => {
-    const classes = useStyles();
-
+const Content = ({ classes }) => {
     return (
         <Container component="main" className={classes.main}>
             <Switch>
@@ -32,4 +23,4 @@ const Content = () => {
     );
 };
 
-export default Content;
+export default withStyles(styles)(Content);

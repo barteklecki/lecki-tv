@@ -1,8 +1,8 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {useHistory} from 'react-router-dom';
-import {filterByDay} from '../../../utils';
-import {displayError} from '../../../store/actions';
+import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { filterByDay } from '../../../utils';
+import { displayError } from '../../../store/actions';
 
 import SelectDay from './SelectDay/SelectDay';
 import MovieListHead from './MovieListHead/MovieListHead';
@@ -14,27 +14,15 @@ import Table from '@material-ui/core/Table';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableBody from '@material-ui/core/TableBody';
 
-import {makeStyles} from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
+import styles from './styles';
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        width: '100%',
-    },
-    table: {
-        width: 'auto',
-        minWidth: '750px',
-        margin: 'auto',
-    },
-}));
-
-const MovieList = ({ movieList, dayFilter, errorMessage, onErrorClose }) => {
-    
+const MovieList = ({ classes, movieList, dayFilter, errorMessage, onErrorClose }) => {
     let history = useHistory();
-    const classes = useStyles();
 
-    let filteredList = filterByDay(movieList, dayFilter) ;
+    let filteredList = filterByDay(movieList, dayFilter);
 
-    const clickItemHandler = (id) => {
+    const clickItemHandler = id => {
         console.log(id);
         history.push(`info/${id}`);
     };
@@ -51,7 +39,7 @@ const MovieList = ({ movieList, dayFilter, errorMessage, onErrorClose }) => {
                     >
                         <MovieListHead />
                         <TableBody>
-                            {filteredList.map((movie) => (
+                            {filteredList.map(movie => (
                                 <Movie
                                     click={clickItemHandler}
                                     key={movie.show.id}
@@ -74,13 +62,19 @@ const MovieList = ({ movieList, dayFilter, errorMessage, onErrorClose }) => {
     return (
         <>
             <SelectDay />
-            { list }
-            { errorMessage ? <ErrorMessage show={true} click={onErrorClose} message={String(errorMessage)}/> : null }
+            {list}
+            {errorMessage ? (
+                <ErrorMessage
+                    show={true}
+                    click={onErrorClose}
+                    message={String(errorMessage)}
+                />
+            ) : null}
         </>
     );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
     return {
         dayFilter: state.dayFilter,
         movieList: state.movieList,
@@ -88,10 +82,11 @@ const mapStateToProps = (state) => {
     };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
     return {
         onErrorClose: () => dispatch(displayError('')),
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(MovieList);
+const connector = connect(mapStateToProps, mapDispatchToProps);
+export default withStyles(styles)(connector(MovieList));

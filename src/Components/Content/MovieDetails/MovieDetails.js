@@ -1,7 +1,8 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {Redirect} from 'react-router-dom';
-import {findRecordById, roundScore, printArray, roundRating, validateString, validateArray} from '../../../utils';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import { findRecordById, roundScore, printArray,roundRating } from '../../../utils';
+import { validateString, validateArray } from '../../../utils';
 import ReactHtmlParser from 'react-html-parser';
 
 import Card from '@material-ui/core/Card';
@@ -12,46 +13,48 @@ import Rating from '@material-ui/lab/Rating';
 import Divider from '@material-ui/core/Divider';
 import Chip from '@material-ui/core/Chip';
 
-import {withStyles} from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import styles from './styles';
 
-const MovieDetails = ({classes, match, movieList}) => {
-
-    const {params: { id }} = match;
-
-
-    if(!movieList.length) {
-        console.log('Empty data list - redirecting to homepage >>>');
-        return <Redirect to="/" />
+const MovieDetails = ({ classes, match, movieList }) => {
+    if (!movieList.length) {
+        return <Redirect to="/" />;
     }
 
-    const [{
-        score,
-        show: {
-            name = '-',
-            genres = ['-'],
-            rating,
-            schedule,
-            runtime = 0,
-            premiered = '-',
-            status = '-',
-            image = '',
-            summary = '',
-        }
-    }] = findRecordById(movieList, id);
+    const {
+        params: { id },
+    } = match;
+    const [
+        {
+            score,
+            show: {
+                name = '-',
+                genres = ['-'],
+                rating,
+                schedule,
+                runtime = 0,
+                premiered = '-',
+                status = '-',
+                image = '',
+                summary = '',
+            },
+        },
+    ] = findRecordById(movieList, id);
 
     const ratingAverage = validateString(rating, 'average');
     const days = validateArray(schedule, 'days');
     const time = validateString(schedule, 'time');
     const imageMedium = validateString(image, 'medium');
-    const imageUrl = imageMedium ? imageMedium : validateString(image, 'original');
+    const imageUrl = imageMedium
+        ? imageMedium
+        : validateString(image, 'original');
 
     return (
         <Card className={classes.root}>
             <CardContent className={classes.summary}>
                 <br />
                 <Typography component="h4" variant="h4" aria-label="title">
-                   {name}
+                    {name}
                 </Typography>
                 <Typography
                     variant="subtitle1"
@@ -61,7 +64,11 @@ const MovieDetails = ({classes, match, movieList}) => {
                     {printArray(genres)}
                 </Typography>
                 <div className={classes.rating}>
-                    <Chip label={roundScore(score, 1)} color="secondary" size="small" />
+                    <Chip
+                        label={roundScore(score, 1)}
+                        color="secondary"
+                        size="small"
+                    />
                     &nbsp;&nbsp;/&nbsp;&nbsp;
                     <Rating
                         readOnly
@@ -76,7 +83,8 @@ const MovieDetails = ({classes, match, movieList}) => {
                     color="textSecondary"
                     aria-label="genere"
                 >
-                    {printArray(days)} {time} {runtime ? `(${runtime}min)` : null}
+                    {printArray(days)} {time}{' '}
+                    {runtime ? `(${runtime}min)` : null}
                 </Typography>
                 <br />
                 <Divider variant="middle" />
@@ -94,7 +102,11 @@ const MovieDetails = ({classes, match, movieList}) => {
                 title={name}
             />
             <CardContent className={classes.content}>
-                <Typography variant="body1" color="textSecondary" component="div">
+                <Typography
+                    variant="body1"
+                    color="textSecondary"
+                    component="div"
+                >
                     {ReactHtmlParser(summary)}
                 </Typography>
             </CardContent>
@@ -103,7 +115,7 @@ const MovieDetails = ({classes, match, movieList}) => {
 };
 
 function mapStateToProps(state) {
-    return { movieList: state.movieList, };
+    return { movieList: state.movieList };
 }
 
 export default withStyles(styles)(connect(mapStateToProps)(MovieDetails));

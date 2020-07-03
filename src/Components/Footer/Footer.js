@@ -4,20 +4,10 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
 
-import theme from '../../assets/theme';
-import { makeStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
+import styles from './styles';
 
-const useStyles = makeStyles({
-    footer: {
-        padding: theme.spacing(1, 2),
-        marginTop: 'auto',
-        backgroundColor: theme.palette.background.paper,
-    },
-});
-
-const Footer = () => {
-    const classes = useStyles();
-
+const Footer = ({ classes }) => {
     return (
         <footer className={classes.footer}>
             <Container maxWidth="sm">
@@ -28,11 +18,14 @@ const Footer = () => {
                     </Link>
                 </Typography>
                 <Typography variant="body2" color="textSecondary">
-                    Copyright © 2020
+                    Copyright © 2020 by&nbsp;
+                    <Link color="inherit" href="https://github.com/barteklecki">
+                        BarLec
+                    </Link>
                 </Typography>
             </Container>
         </footer>
     );
 };
 
-export default Footer;
+export default withStyles(styles)(Footer);

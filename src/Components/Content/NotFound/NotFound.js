@@ -4,24 +4,13 @@ import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import { ReactComponent as NotFoundIcon } from '../../../assets/not-found2.svg';
 
-const style = {
-    width: '90%',
-    maxWidth: 400,
-    margin: 'auto',
-    marginTop: '1rem',
-    justifyContent: 'center',
-    backgroundColor: 'transparent',
-    textAlign: 'center',
-};
+import { withStyles } from '@material-ui/core/styles';
+import styles from './styles';
 
-const icon = {
-    maxWidth: 350,
-};
-
-const NotFound = () => {
+const NotFound = ({ classes }) => {
     return (
-        <Container style={style}>
-            <NotFoundIcon style={icon} />
+        <Container className={classes.root}>
+            <NotFoundIcon className={classes.icon} />
             <br />
             <Typography variant="h6" gutterBottom>
                 No results! <br />
@@ -30,4 +19,4 @@ const NotFound = () => {
     );
 };
 
-export default NotFound;
+export default withStyles(styles)(NotFound);
