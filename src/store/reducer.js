@@ -1,10 +1,8 @@
 import * as actions from './actions';
-//import dummyMovieList from './dummyApi';
 
 const initiallState = {
     isListFetching: false,
     dayFilter: '',
-    //movieList: [...dummyMovieList],
     movieList: [],
     errorMessage: '',
 };
