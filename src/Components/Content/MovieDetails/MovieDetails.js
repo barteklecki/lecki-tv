@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { findRecordById, roundScore, printArray,roundRating } from '../../../utils';
+import { findRecordById, roundScore, printArray, roundRating } from '../../../utils';
 import { validateString, validateArray } from '../../../utils';
 import ReactHtmlParser from 'react-html-parser';
 
@@ -52,8 +52,12 @@ const MovieDetails = ({ classes, match, movieList }) => {
     return (
         <Card className={classes.root}>
             <CardContent className={classes.summary}>
-                <br />
-                <Typography component="h4" variant="h4" aria-label="title">
+                <Typography
+                    className={classes.text}
+                    component="h4"
+                    variant="h4"
+                    aria-label="title"
+                >
                     {name}
                 </Typography>
                 <Typography
@@ -79,6 +83,7 @@ const MovieDetails = ({ classes, match, movieList }) => {
                     />
                 </div>
                 <Typography
+                    className={classes.text}
                     variant="h6"
                     color="textSecondary"
                     aria-label="genere"
@@ -86,14 +91,18 @@ const MovieDetails = ({ classes, match, movieList }) => {
                     {printArray(days)} {time}{' '}
                     {runtime ? `(${runtime}min)` : null}
                 </Typography>
-                <br />
-                <Divider variant="middle" />
-                <br />
-                <Typography variant="subtitle1" color="textSecondary">
-                    premiere:<strong> {premiered}</strong>
-                    <br />
-                    status:<strong> {status}</strong>
-                    <br />
+                <Divider className={classes.text} variant="middle" />
+                <Typography
+                    className={classes.text}
+                    variant="subtitle1"
+                    color="textSecondary"
+                >
+                    <p>
+                        premiere:<strong> {premiered}</strong>
+                    </p>
+                    <p>
+                        status:<strong> {status}</strong>
+                    </p>
                 </Typography>
             </CardContent>
             <CardMedia

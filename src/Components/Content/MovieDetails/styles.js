@@ -30,4 +30,7 @@ export default theme => ({
         justifyContent: 'center',
         padding: '1rem',
     },
+    text: {
+        marginTop: '1rem',
+    },
 });
