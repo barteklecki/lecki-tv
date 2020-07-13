@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { findRecordById, roundScore, printArray, roundRating } from '../../../utils';
+import { roundScore, printArray, roundRating } from '../../../utils';
 import { validateString, validateArray } from '../../../utils';
 import ReactHtmlParser from 'react-html-parser';
 
@@ -15,6 +15,8 @@ import Chip from '@material-ui/core/Chip';
 
 import { withStyles } from '@material-ui/core/styles';
 import styles from './styles';
+
+const findRecordById = (arr, id) => arr.filter(el => el.show.id === +id);
 
 const MovieDetails = ({ classes, match, movieList }) => {
     if (!movieList.length) {

@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { filterByDay } from '../../../utils';
 import { displayError } from '../../../store/actions';
 
 import SelectDay from './SelectDay/SelectDay';
@@ -16,6 +15,13 @@ import TableBody from '@material-ui/core/TableBody';
 
 import { withStyles } from '@material-ui/core/styles';
 import styles from './styles';
+
+const filterByDay = (arr, day) => {
+    if (day) {
+        return arr.filter(el => el.show.schedule.days.find(d => d === day));
+    }
+    return arr;
+};
 
 const MovieList = ({ classes, movieList, dayFilter, errorMessage, onErrorClose }) => {
     let history = useHistory();
