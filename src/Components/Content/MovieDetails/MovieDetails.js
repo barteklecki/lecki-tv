@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { roundScore, printArray, roundRating } from '../../../utils';
-import { validateString, validateArray } from '../../../utils';
+import { checkString, checkArray } from '../../../utils';
 import ReactHtmlParser from 'react-html-parser';
 
 import Card from '@material-ui/core/Card';
@@ -43,13 +43,13 @@ const MovieDetails = ({ classes, match, movieList }) => {
         },
     ] = findRecordById(movieList, id);
 
-    const ratingAverage = validateString(rating, 'average');
-    const days = validateArray(schedule, 'days');
-    const time = validateString(schedule, 'time');
-    const imageMedium = validateString(image, 'medium');
+    const ratingAverage = checkString(rating, 'average');
+    const days = checkArray(schedule, 'days');
+    const time = checkString(schedule, 'time');
+    const imageMedium = checkString(image, 'medium');
     const imageUrl = imageMedium
         ? imageMedium
-        : validateString(image, 'original');
+        : checkString(image, 'original');
 
     return (
         <Card className={classes.root}>

@@ -8,5 +8,5 @@ export const roundRating = rating => Math.round(rating - 0.1) / 2;
 
 export const printArray = arr => arr.join(', ');
 
-export const validateString = (data, key) => (data ? data[key] : '');
-export const validateArray = (data, key) => (data ? data[key] : []);
+export const checkString = (data, key) => (data ? data[key] : '');
+export const checkArray = (data, key) => (data ? data[key] : []);
