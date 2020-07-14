@@ -114,6 +114,7 @@ const MovieDetails = ({ classes, match }) => {
                     &nbsp;&nbsp;/&nbsp;&nbsp;
                     <Rating
                         readOnly
+                        disabled={!ratingAverage ? true : false}
                         name="half-rating-read"
                         value={roundRating(ratingAverage)}
                         precision={0.5}
