@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { roundScore, printArray, roundRating } from '../../../utils';
 import { checkString, checkArray } from '../../../utils';
@@ -18,7 +18,9 @@ import styles from './styles';
 
 const findRecordById = (arr, id) => arr.filter(el => el.show.id === +id);
 
-const MovieDetails = ({ classes, match, movieList }) => {
+const MovieDetails = ({ classes, match }) => {
+    const movieList = useSelector(state => state.movieList);
+
     if (!movieList.length) {
         return <Redirect to="/" />;
     }
@@ -26,6 +28,7 @@ const MovieDetails = ({ classes, match, movieList }) => {
     const {
         params: { id },
     } = match;
+
     const [
         {
             score,
@@ -125,8 +128,4 @@ const MovieDetails = ({ classes, match, movieList }) => {
     );
 };
 
-function mapStateToProps(state) {
-    return { movieList: state.movieList };
-}
-
-export default withStyles(styles)(connect(mapStateToProps)(MovieDetails));
+export default withStyles(styles)(MovieDetails);

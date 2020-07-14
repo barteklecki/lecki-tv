@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Route, Switch } from 'react-router-dom';
 import * as actions from '../../store/actions';
@@ -16,8 +16,12 @@ import SearchIcon from '@material-ui/icons/Search';
 import { withStyles } from '@material-ui/core/styles';
 import styles from './styles';
 
-const Header = ({ classes, isListFetching, onFetchList }) => {
-    let history = useHistory();
+const Header = ({ classes }) => {
+    const isListFetching = useSelector(state => state.isListFetching);
+    const dispatch = useDispatch();
+    const history = useHistory();
+
+    const onFetchList = phrase => dispatch(actions.fetchList(phrase));
 
     const clickReturnHandler = id => {
         history.goBack();
@@ -98,17 +102,4 @@ const Header = ({ classes, isListFetching, onFetchList }) => {
     );
 };
 
-const mapStateToProps = state => {
-    return {
-        isListFetching: state.isListFetching,
-    };
-};
-
-const mapDispatchToProps = dispatch => {
-    return {
-        onFetchList: phrase => dispatch(actions.fetchList(phrase)),
-    };
-};
-
-const connector = connect(mapStateToProps, mapDispatchToProps);
-export default withStyles(styles)(connector(Header));
+export default withStyles(styles)(Header);

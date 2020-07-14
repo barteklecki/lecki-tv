@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import * as actions from '../../../../store/actions';
 
 import List from '@material-ui/core/List';
@@ -19,7 +19,12 @@ const week = [
     { id: 7, short: 'Su', long: 'Sunday' },
 ];
 
-const SelectDay = ({ classes, dayFilter, onSetDayFilter }) => {
+const SelectDay = ({ classes }) => {
+    const dayFilter = useSelector(state => state.dayFilter);
+    const dispatch = useDispatch();
+
+    const onSetDayFilter = day => dispatch(actions.setDayFilter(day));
+
     return (
         <List
             component="nav"
@@ -41,17 +46,4 @@ const SelectDay = ({ classes, dayFilter, onSetDayFilter }) => {
     );
 };
 
-const mapStateToProps = state => {
-    return {
-        dayFilter: state.dayFilter,
-    };
-};
-
-const mapDispatchToProps = dispatch => {
-    return {
-        onSetDayFilter: day => dispatch(actions.setDayFilter(day)),
-    };
-};
-
-const connector = connect(mapStateToProps, mapDispatchToProps);
-export default withStyles(styles)(connector(SelectDay));
+export default withStyles(styles)(SelectDay);

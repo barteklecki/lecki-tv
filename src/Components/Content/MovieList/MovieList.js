@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { displayError } from '../../../store/actions';
 
@@ -23,10 +23,15 @@ const filterByDay = (arr, day) => {
     return arr;
 };
 
-const MovieList = ({ classes, movieList, dayFilter, errorMessage, onErrorClose }) => {
-    let history = useHistory();
+const MovieList = ({ classes }) => {
+    const movieList = useSelector(state => state.movieList);
+    const dayFilter = useSelector(state => state.dayFilter);
+    const errorMessage = useSelector(state => state.errorMessage);
+    const dispatch = useDispatch();
+    const history = useHistory();
 
-    let filteredList = filterByDay(movieList, dayFilter);
+    const onErrorClose = () => dispatch(displayError(''));
+    const filteredList = filterByDay(movieList, dayFilter);
 
     const clickItemHandler = id => {
         history.push(`info/${id}`);
@@ -34,9 +39,7 @@ const MovieList = ({ classes, movieList, dayFilter, errorMessage, onErrorClose }
 
     let list = '';
     if (filteredList.length) {
-        list = (
-            <>
-                <TableContainer className={classes.root}>
+        list =  <TableContainer className={classes.root}>
                     <Table
                         className={classes.table}
                         aria-labelledby="tableTitle"
@@ -58,8 +61,6 @@ const MovieList = ({ classes, movieList, dayFilter, errorMessage, onErrorClose }
                         </TableBody>
                     </Table>
                 </TableContainer>
-            </>
-        );
     } else {
         list = <NotFound />;
     }
@@ -79,19 +80,4 @@ const MovieList = ({ classes, movieList, dayFilter, errorMessage, onErrorClose }
     );
 };
 
-const mapStateToProps = state => {
-    return {
-        dayFilter: state.dayFilter,
-        movieList: state.movieList,
-        errorMessage: state.errorMessage,
-    };
-};
-
-const mapDispatchToProps = dispatch => {
-    return {
-        onErrorClose: () => dispatch(displayError('')),
-    };
-};
-
-const connector = connect(mapStateToProps, mapDispatchToProps);
-export default withStyles(styles)(connector(MovieList));
+export default withStyles(styles)(MovieList);
