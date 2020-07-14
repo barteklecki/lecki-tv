@@ -22,6 +22,7 @@ const Header = ({ classes }) => {
     const history = useHistory();
 
     const onFetchList = phrase => dispatch(actions.fetchList(phrase));
+    const setFetchingFlag = () => dispatch(actions.setFetchingFlag());
 
     const clickReturnHandler = id => {
         history.goBack();
@@ -35,6 +36,7 @@ const Header = ({ classes }) => {
         if (event.key === 'Enter') {
             if (event.target.value) {
                 history.push('/search');
+                setFetchingFlag();
                 onFetchList(event.target.value);
                 event.preventDefault();
             }

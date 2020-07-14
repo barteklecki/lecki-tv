@@ -8,6 +8,7 @@ import MovieListHead from './MovieListHead/MovieListHead';
 import Movie from './Movie/Movie';
 import NotFound from '../NotFound/NotFound';
 import ErrorMessage from '../../ErrorMessage/ErrorMessage';
+import ListPlaceholder from './ListPlaceholder/ListPlaceholder';
 
 import Table from '@material-ui/core/Table';
 import TableContainer from '@material-ui/core/TableContainer';
@@ -25,6 +26,7 @@ const filterByDay = (arr, day) => {
 
 const MovieList = ({ classes }) => {
     const movieList = useSelector(state => state.movieList);
+    const isListFetching = useSelector(state => state.isListFetching);
     const dayFilter = useSelector(state => state.dayFilter);
     const errorMessage = useSelector(state => state.errorMessage);
     const dispatch = useDispatch();
@@ -38,6 +40,7 @@ const MovieList = ({ classes }) => {
     };
 
     let list = '';
+
     if (filteredList.length) {
         list =  <TableContainer className={classes.root}>
                     <Table
@@ -61,6 +64,8 @@ const MovieList = ({ classes }) => {
                         </TableBody>
                     </Table>
                 </TableContainer>
+    } else if ( isListFetching ) {
+        list = <ListPlaceholder repet={10} />
     } else {
         list = <NotFound />;
     }
