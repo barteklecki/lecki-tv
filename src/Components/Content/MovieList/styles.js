@@ -1,5 +1,9 @@
 export default theme => ({
-    root: {
+    scrollFix: {
+        width: '100%',
+        paddingLeft: 'calc(100vw - 100%)',
+    },
+    tabContainer: {
         width: '100%',
     },
     table: {

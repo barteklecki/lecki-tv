@@ -42,7 +42,7 @@ const MovieList = ({ classes }) => {
     let list = '';
 
     if (filteredList.length) {
-        list =  <TableContainer className={classes.root}>
+        list =  <TableContainer className={classes.tabContainer}>
                     <Table
                         className={classes.table}
                         aria-labelledby="tableTitle"
@@ -71,7 +71,7 @@ const MovieList = ({ classes }) => {
     }
 
     return (
-        <>
+        <div className={classes.scrollFix}>
             <SelectDay />
             {list}
             {errorMessage ? (
@@ -81,7 +81,7 @@ const MovieList = ({ classes }) => {
                     message={String(errorMessage)}
                 />
             ) : null}
-        </>
+        </div>
     );
 };
 
