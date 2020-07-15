@@ -19,8 +19,26 @@ const week = [
     { id: 7, short: 'Su', long: 'Sunday' },
 ];
 
+const checkWhichDays = (movieList) => {
+    if (!movieList) {
+        return [];
+    }
+
+    const dayMask = {};
+    movieList.forEach( show => {
+        const days = show.show?.schedule?.days;
+        if (days) {
+            days.forEach( day => {
+                dayMask[day] = true;
+            });
+        }
+    });
+    return dayMask;
+}
+
 const SelectDay = ({ classes }) => {
     const dayFilter = useSelector(state => state.dayFilter);
+    const dayFilterMask = useSelector( state => checkWhichDays( state.movieList ) );
     const dispatch = useDispatch();
 
     const onSetDayFilter = day => dispatch(actions.setDayFilter(day));

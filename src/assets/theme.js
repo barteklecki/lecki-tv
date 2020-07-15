@@ -8,6 +8,15 @@ const darkTheme = createMuiTheme({
             main: '#ff6344',
         },
     },
+    overrides: {
+        MuiListItem: {
+          root: {
+            "&$selected": {
+              backgroundColor: '#ff6344',
+            },
+          },
+        },
+    },
 });
 
 export default darkTheme;
