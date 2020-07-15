@@ -33,14 +33,16 @@ const checkWhichDays = (movieList) => {
             });
         }
     });
+
     return dayMask;
 }
 
 const SelectDay = ({ classes }) => {
     const dayFilter = useSelector(state => state.dayFilter);
-    const dayFilterMask = useSelector( state => checkWhichDays( state.movieList ) );
+    const movieList = useSelector(state =>  state.movieList);
     const dispatch = useDispatch();
 
+    const dayFilterMask = checkWhichDays(movieList);
     const onSetDayFilter = day => dispatch(actions.setDayFilter(day));
 
     return (
@@ -53,11 +55,12 @@ const SelectDay = ({ classes }) => {
                 <ListItem
                     onClick={() => onSetDayFilter(day.long)}
                     selected={dayFilter === day.long}
+                    disabled={!dayFilterMask[day.long]}
                     key={day.id}
                     className={classes.item}
                     button
                 >
-                    <ListItemText primary={day.short} />
+                    <ListItemText>{dayFilter === day.long ? '❌' : day.short}</ListItemText>
                 </ListItem>
             ))}
         </List>
