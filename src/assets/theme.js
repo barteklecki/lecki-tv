@@ -13,6 +13,9 @@ const darkTheme = createMuiTheme({
           root: {
             "&$selected": {
               backgroundColor: '#ff6344',
+              '&:hover': {
+                backgroundColor: '#ff6344',
+            }
             },
           },
         },
