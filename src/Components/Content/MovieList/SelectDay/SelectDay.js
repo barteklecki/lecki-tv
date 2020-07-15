@@ -50,6 +50,7 @@ const SelectDay = ({ classes }) => {
             component="nav"
             className={classes.root}
             aria-label="filter movie by day of week"
+            dense={true}
         >
             {week.map(day => (
                 <ListItem
@@ -60,7 +61,9 @@ const SelectDay = ({ classes }) => {
                     className={classes.item}
                     button
                 >
-                    <ListItemText>{dayFilter === day.long ? '❌' : day.short}</ListItemText>
+                    <ListItemText>
+                        {dayFilter === day.long ? '\u274C' : day.short}
+                    </ListItemText>
                 </ListItem>
             ))}
         </List>

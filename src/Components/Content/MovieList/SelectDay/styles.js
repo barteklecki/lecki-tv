@@ -3,7 +3,7 @@ export default theme => ({
         display: 'flex',
         width: 'fit-content',
         maxWidth: '100%',
-        height: '3.5rem',
+        height: '2.5rem',
         flexDirection: 'row',
         justifyContent: 'start',
         margin: 'auto',
@@ -14,8 +14,9 @@ export default theme => ({
     },
     item: {
         width: 'auto',
-        minWidth: '3.5rem',
+        minWidth: '2.5rem',
         textAlign: 'center',
         borderRadius: '2rem 2rem',
+        padding: '0.25rem 0.25rem',
     },
 });
