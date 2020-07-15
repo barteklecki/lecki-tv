@@ -32,6 +32,7 @@ export default (theme) => ({
         width: '100%',
         [theme.breakpoints.up('sm')]: {
             marginLeft: theme.spacing(1),
+            marginRight: `calc(${theme.spacing(8)}px + 100% - 100vw)`,
             width: 'auto',
         },
     },

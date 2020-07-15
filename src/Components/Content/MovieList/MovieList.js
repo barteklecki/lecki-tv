@@ -71,7 +71,7 @@ const MovieList = ({ classes }) => {
     }
 
     return (
-        <div className={classes.scrollFix}>
+        <>
             <SelectDay />
             {list}
             {errorMessage ? (
@@ -81,7 +81,7 @@ const MovieList = ({ classes }) => {
                     message={String(errorMessage)}
                 />
             ) : null}
-        </div>
+        </>
     );
 };
 
