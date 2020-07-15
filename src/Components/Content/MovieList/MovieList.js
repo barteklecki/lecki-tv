@@ -42,7 +42,7 @@ const MovieList = ({ classes }) => {
     let list = '';
 
     if (filteredList.length) {
-        list =  <TableContainer className={classes.tabContainer}>
+        list =  <TableContainer className={classes.root}>
                     <Table
                         className={classes.table}
                         aria-labelledby="tableTitle"
@@ -59,6 +59,7 @@ const MovieList = ({ classes }) => {
                                     title={movie.show.name}
                                     genres={movie.show.genres}
                                     premiere={movie.show.premiered}
+                                    colClasses={classes}
                                 />
                             ))}
                         </TableBody>

@@ -9,7 +9,16 @@ import Chip from '@material-ui/core/Chip';
 import { withStyles } from '@material-ui/core/styles';
 import styles from './styles';
 
-const Movie = ({ classes, id, score, title, genres, premiere, click }) => {
+const Movie = ({
+    classes,
+    id,
+    score,
+    title,
+    genres,
+    premiere,
+    click,
+    colClasses,
+}) => {
     return (
         <TableRow
             component="tr"
@@ -18,8 +27,7 @@ const Movie = ({ classes, id, score, title, genres, premiere, click }) => {
             onClick={() => click(id)}
         >
             <TableCell
-                className={classes.scoreCell}
-                id=""
+                className={colClasses.col1}
                 scope="row"
                 padding="default"
             >
@@ -31,9 +39,15 @@ const Movie = ({ classes, id, score, title, genres, premiere, click }) => {
                     size="small"
                 />
             </TableCell>
-            <TableCell align="left">{title}</TableCell>
-            <TableCell align="left">{printArray(genres)}</TableCell>
-            <TableCell align="left">{premiere}</TableCell>
+            <TableCell align="left" className={colClasses.col2}>
+                {title}
+            </TableCell>
+            <TableCell align="left" className={colClasses.col3}>
+                {printArray(genres)}
+            </TableCell>
+            <TableCell align="left" className={colClasses.col4}>
+                {premiere}
+            </TableCell>
         </TableRow>
     );
 };

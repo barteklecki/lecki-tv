@@ -10,7 +10,7 @@ import TableCell from '@material-ui/core/TableCell';
 import Skeleton from '@material-ui/lab/Skeleton';
 
 import { withStyles } from '@material-ui/core/styles';
-import styles from './styles';
+import styles from '../styles';
 
 const ListPlaceholder = ({ classes, repet = 5 }) => {
 
@@ -24,8 +24,8 @@ const ListPlaceholder = ({ classes, repet = 5 }) => {
 
         return <TableRow key={index}>
                     { cells.map( ( cellClasses, index ) =>
-                        <TableCell key={index}>
-                            <Skeleton className={cellClasses} />
+                        <TableCell key={index} className={cellClasses}>
+                            <Skeleton />
                         </TableCell>
                     )}
                 </TableRow>

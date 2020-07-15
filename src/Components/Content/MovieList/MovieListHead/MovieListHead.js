@@ -4,6 +4,9 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 
+import { withStyles } from '@material-ui/core/styles';
+import styles from '../styles';
+
 const config = [
     {id: 1, name: 'Score'},
     {id: 2, name: 'Title'},
@@ -11,20 +14,23 @@ const config = [
     {id: 4, name: 'Premiere'},
 ];
 
-const printTabHeader = config.map( cell => 
-    <TableCell key={cell.id}>
-                    { cell.name }
-    </TableCell>
-);
+const MovieListHead = ({classes}) => {
+    const printTabHeader = config.map( cell => 
+        <TableCell 
+            key={cell.id}
+            className={`cell${cell.id}`}
+        >
+                        { cell.name }
+        </TableCell>
+    );
 
-const MovieListHead = () => {
-return (
-    <TableHead>
-        <TableRow>
-            { printTabHeader }
-        </TableRow>
-    </TableHead>
-);
+    return (
+        <TableHead>
+            <TableRow>
+                { printTabHeader }
+            </TableRow>
+        </TableHead>
+    );
 }
 
-export default MovieListHead;
+export default withStyles(styles)(MovieListHead);
